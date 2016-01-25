@@ -5,7 +5,7 @@
 #Lang - python 2.7
 #Class - Artificial Intelligence
 
-class treasure_hunt2(object):
+class treasure_hunt(object):
     #reads maps that are 11 by 11
     def __init__(self, map_file):
         self.lines = [[0 for x in  range(10)] for x in range(10)]
@@ -62,6 +62,6 @@ class treasure_hunt2(object):
 #prints and asks what file you would like
 file_name = raw_input("name of file :")
 
-solution = treasure_hunt2(file_name)
+solution = treasure_hunt(file_name)
 
 print solution.backtrack(5, 5, "")
