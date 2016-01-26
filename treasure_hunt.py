@@ -10,13 +10,13 @@ class treasure_hunt(object):
     """
     Initilize Function
     reads maps that are 11 by 11
-    @ param map_file - takes a file string and then reads through it. 
+    @ param map_file - takes a file string and then reads through it.
     """
     def __init__(self, map_file):
         self.lines = [[0 for x in  range(11)] for x in range(11)]
         self.table = [[1 for x in range(11)] for x in range(11)]
         """
-        The last couple lines strips the spaces in the file and 
+        The last couple lines strips the spaces in the file and
         readlines so that you can index everything in a list in python
         """
         treasure_map = open(map_file, "r")
@@ -27,12 +27,12 @@ class treasure_hunt(object):
     """
     takes the x and y coordinate in the list
     moves is the moves you have made in the map throughout
-    the recursive calls. 
+    the recursive calls.
     """
     def backtrack(self, x, y, moves):
-        #Values is the offset used in the file  
+        #Values is the offset used in the file
+        #Also prints offset
         value = int(self.lines[x][y])
-
         print "Offset: %s" % value
 
         #Marks whether or not you have been to this location already
@@ -44,7 +44,7 @@ class treasure_hunt(object):
             print "Solution : %s" % moves
             print "Found a solution %d %d Return it!" %(x, y)
             return True
-        #else, does the recursive function calls
+        #Else, does the recursive function calls
         else:
             #Sets the visited location in another table
             self.table[x][y] = 0
@@ -80,11 +80,12 @@ class treasure_hunt(object):
                     return True
                 else:
                     self.table[x][y] = 0
+        #Returns false if all else fails.
         return False
 
-#prints and asks what file you would like to read in
+#Prints and asks what file you would like to read in
 file_name = raw_input("Name of file :")
 
 solution = treasure_hunt(file_name)
-
+#Prints the recursive solution
 print solution.backtrack(5, 5, "")
